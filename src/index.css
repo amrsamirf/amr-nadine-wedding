@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #1a0a0a;
-  --color-foreground: #f5e6d0;
-  --color-gold: #d4a853;
-  --color-gold-light: #e8c97a;
-  --color-gold-dark: #b8912e;
+  --color-background: #f8f0e8;
+  --color-foreground: #2c1810;
+  --color-gold: #8b1a1a;
+  --color-gold-light: #b82e2e;
+  --color-gold-dark: #6b1010;
   --color-red: #8b1a1a;
   --color-red-light: #a52a2a;
-  --color-red-dark: #5c0e0e;
+  --color-red-dark: #f0e6dc;
   --color-cream: #fdf5e6;
+  --color-green: #3d6b4f;
+  --color-green-light: #5a8a6a;
+  --color-green-dark: #2d4f3a;
   --font-playfair: "Playfair Display", serif;
   --font-cormorant: "Cormorant Garamond", serif;
   --font-great-vibes: "Great Vibes", cursive;
@@ -79,8 +82,8 @@ body {
 
 /* Pulse glow for countdown */
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(212, 168, 83, 0.2); }
-  50% { box-shadow: 0 0 25px rgba(212, 168, 83, 0.4); }
+  0%, 100% { box-shadow: 0 0 15px rgba(139, 26, 26, 0.15); }
+  50% { box-shadow: 0 0 25px rgba(139, 26, 26, 0.3); }
 }
 
 .pulse-glow {
@@ -103,6 +106,6 @@ body {
 
 /* Scrollbar styling */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-red-dark); }
+::-webkit-scrollbar-track { background: var(--color-background); }
 ::-webkit-scrollbar-thumb { background: var(--color-gold-dark); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }

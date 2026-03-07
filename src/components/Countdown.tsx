@@ -54,12 +54,12 @@ export default function Countdown({ targetDate }: CountdownProps) {
       <div className="grid grid-cols-4 gap-4 sm:gap-6">
         {["Days", "Hours", "Minutes", "Seconds"].map((label) => (
           <div key={label} className="flex flex-col items-center">
-            <div className="pulse-glow fancy-border rounded-lg bg-red-dark/50 px-4 py-5 sm:px-6 sm:py-6 min-w-[70px] sm:min-w-[90px]">
+            <div className="pulse-glow fancy-border rounded-lg bg-red-dark px-4 py-5 sm:px-6 sm:py-6 min-w-[70px] sm:min-w-[90px]">
               <span className="block text-center text-3xl sm:text-4xl font-bold font-[family-name:var(--font-playfair)] text-gold">
                 --
               </span>
             </div>
-            <span className="mt-2 text-xs sm:text-sm uppercase tracking-[0.2em] text-gold/70">
+            <span className="mt-2 text-xs sm:text-sm uppercase tracking-[0.2em] text-gold">
               {label}
             </span>
           </div>
@@ -79,12 +79,12 @@ export default function Countdown({ targetDate }: CountdownProps) {
     <div className="grid grid-cols-4 gap-4 sm:gap-6">
       {units.map(({ label, value }) => (
         <div key={label} className="flex flex-col items-center">
-          <div className="pulse-glow fancy-border rounded-lg bg-red-dark/50 px-4 py-5 sm:px-6 sm:py-6 min-w-[70px] sm:min-w-[90px]">
+          <div className="pulse-glow fancy-border rounded-lg bg-red-dark px-4 py-5 sm:px-6 sm:py-6 min-w-[70px] sm:min-w-[90px]">
             <span className="block text-center text-3xl sm:text-4xl font-bold font-[family-name:var(--font-playfair)] text-gold">
               {String(value).padStart(2, "0")}
             </span>
           </div>
-          <span className="mt-2 text-xs sm:text-sm uppercase tracking-[0.2em] text-gold/70">
+          <span className="mt-2 text-xs sm:text-sm uppercase tracking-[0.2em] text-gold">
             {label}
           </span>
         </div>

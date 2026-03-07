@@ -5,7 +5,7 @@ const WEDDING_DATE = "2026-04-11T17:00:00";
 const WEDDING_DISPLAY_DATE = "Saturday, April 11th, 2026";
 const WEDDING_TIME = "5:00 PM";
 const WEDDING_VENUE = "The Garden Venue";
-const WEDDING_ADDRESS = "Cairo, Egypt";
+const WEDDING_ADDRESS = "Family Park, Gate 4, New Cairo";
 const WEDDING_MAP_URL = "https://maps.app.goo.gl/MGcWduSzkcBLm4PE9";
 
 export default function App() {
@@ -13,15 +13,12 @@ export default function App() {
     <div className="relative min-h-screen overflow-hidden">
       {/* Background pattern overlay */}
       <div
-        className="pointer-events-none fixed inset-0 opacity-[0.03]"
+        className="pointer-events-none fixed inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a853' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233d6b4f' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Radial gradient overlays */}
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(139,26,26,0.3)_0%,_transparent_60%)]" />
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(92,14,14,0.4)_0%,_transparent_60%)]" />
 
       <main className="relative z-10 flex flex-col items-center">
 
@@ -39,7 +36,7 @@ export default function App() {
           </div>
 
           <div className="fade-in-up fade-in-up-delay-1">
-            <p className="mb-8 text-sm font-medium uppercase tracking-[0.35em] text-gold/70 font-[family-name:var(--font-playfair)]">
+            <p className="mb-8 text-base font-semibold uppercase tracking-[0.35em] text-gold font-[family-name:var(--font-playfair)]">
               Together with their families
             </p>
           </div>
@@ -63,7 +60,7 @@ export default function App() {
           </div>
 
           <div className="fade-in-up fade-in-up-delay-5 mt-10">
-            <p className="text-lg sm:text-xl font-light tracking-widest text-foreground/80 font-[family-name:var(--font-playfair)]">
+            <p className="text-xl sm:text-2xl font-semibold tracking-widest text-foreground font-[family-name:var(--font-playfair)]">
               Invite you to celebrate their wedding
             </p>
           </div>
@@ -89,7 +86,7 @@ export default function App() {
 
         {/* ── Details Section (original design) ── */}
         <section className="w-full max-w-4xl px-6 py-24">
-          <div className="fancy-border rounded-xl bg-red-dark/30 p-8 sm:p-12 backdrop-blur-sm">
+          <div className="fancy-border rounded-xl bg-red-dark p-8 sm:p-12">
             {/* Section title */}
             <div className="mb-12 text-center">
               <h2 className="gold-shimmer font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-semibold">
@@ -109,10 +106,10 @@ export default function App() {
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-gold/10">
                   <Calendar className="h-6 w-6 text-gold" />
                 </div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold text-gold">
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-gold">
                   The Date
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground" style={{ fontFamily: "system-ui, sans-serif" }}>
                   {WEDDING_DISPLAY_DATE}
                 </p>
               </div>
@@ -122,10 +119,10 @@ export default function App() {
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-gold/10">
                   <Clock className="h-6 w-6 text-gold" />
                 </div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold text-gold">
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-gold">
                   The Time
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground" style={{ fontFamily: "system-ui, sans-serif" }}>
                   {WEDDING_TIME}
                 </p>
               </div>
@@ -135,20 +132,20 @@ export default function App() {
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-gold/10">
                   <MapPin className="h-6 w-6 text-gold" />
                 </div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold text-gold">
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-gold">
                   The Venue
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground" style={{ fontFamily: "system-ui, sans-serif" }}>
                   {WEDDING_VENUE}
                 </p>
-                <p className="text-xs text-foreground/50 mt-1">
+                <p className="text-base text-foreground mt-1" style={{ fontFamily: "system-ui, sans-serif" }}>
                   {WEDDING_ADDRESS}
                 </p>
                 <a
                   href={WEDDING_MAP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-block text-xs uppercase tracking-widest text-gold/70 border border-gold/30 rounded-full px-4 py-1.5 hover:bg-gold/10 transition-colors"
+                  className="mt-3 inline-block text-sm font-semibold uppercase tracking-widest text-gold border border-gold/50 rounded-full px-5 py-2 hover:bg-gold/10 transition-colors font-[family-name:var(--font-playfair)]"
                 >
                   View Map
                 </a>
@@ -162,7 +159,7 @@ export default function App() {
           <h2 className="gold-shimmer font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-semibold mb-3">
             Counting Down
           </h2>
-          <p className="text-foreground/60 text-sm tracking-widest uppercase mb-10">
+          <p className="text-foreground text-base font-semibold tracking-widest uppercase mb-10 font-[family-name:var(--font-playfair)]">
             To Our Special Day
           </p>
           <Countdown targetDate={WEDDING_DATE} />
@@ -186,7 +183,7 @@ export default function App() {
             Join Us
           </p>
 
-          <p className="text-foreground/50 text-sm tracking-[0.25em] uppercase font-[family-name:var(--font-playfair)]">
+          <p className="text-foreground text-lg font-semibold tracking-[0.25em] uppercase font-[family-name:var(--font-playfair)]">
             Amr &amp; Nadine
           </p>
 
@@ -202,7 +199,7 @@ export default function App() {
 
         {/* ── Footer ── */}
         <footer className="w-full py-8 text-center border-t border-gold/10">
-          <p className="text-xs text-foreground/30 tracking-wider">
+          <p className="text-sm text-foreground font-[family-name:var(--font-playfair)] tracking-wider">
             With love, Amr &amp; Nadine &bull; {WEDDING_DISPLAY_DATE}
           </p>
         </footer>
