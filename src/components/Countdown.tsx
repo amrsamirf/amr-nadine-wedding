@@ -9,9 +9,10 @@ interface TimeLeft {
 
 interface CountdownProps {
   targetDate: string;
+  labels: readonly [string, string, string, string];
 }
 
-export default function Countdown({ targetDate }: CountdownProps) {
+export default function Countdown({ targetDate, labels }: Readonly<CountdownProps>) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -52,7 +53,7 @@ export default function Countdown({ targetDate }: CountdownProps) {
   if (!mounted) {
     return (
       <div className="grid grid-cols-4 gap-4 sm:gap-6">
-        {["Days", "Hours", "Minutes", "Seconds"].map((label) => (
+        {labels.map((label) => (
           <div key={label} className="flex flex-col items-center">
             <div className="pulse-glow fancy-border rounded-lg bg-red-dark px-4 py-5 sm:px-6 sm:py-6 min-w-[70px] sm:min-w-[90px]">
               <span className="block text-center text-3xl sm:text-4xl font-bold font-[family-name:var(--font-playfair)] text-gold">
@@ -69,10 +70,10 @@ export default function Countdown({ targetDate }: CountdownProps) {
   }
 
   const units = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds },
+    { label: labels[0], value: timeLeft.days },
+    { label: labels[1], value: timeLeft.hours },
+    { label: labels[2], value: timeLeft.minutes },
+    { label: labels[3], value: timeLeft.seconds },
   ];
 
   return (

@@ -1,5 +1,47 @@
 import { Heart, MapPin, Calendar, Clock } from "lucide-react";
 import Countdown from "./components/Countdown";
+import type { CSSProperties } from "react";
+
+function FloralCorner({ className, style }: Readonly<{ className?: string; style?: CSSProperties }>) {
+  return (
+    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={style}>
+      {/* Main diagonal stem */}
+      <path d="M8 152 C 40 120 90 80 148 12" stroke="#3d6b4f" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+      {/* Side branch left */}
+      <path d="M30 128 C 10 115 5 95 18 88" stroke="#3d6b4f" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
+      {/* Side branch right */}
+      <path d="M80 80 C 95 62 88 42 100 38" stroke="#3d6b4f" strokeWidth="1.2" strokeLinecap="round" fill="none"/>
+      {/* Leaf 1 */}
+      <path d="M48 110 C 62 90 82 95 70 110 C 58 122 44 120 48 110Z" fill="#3d6b4f"/>
+      <path d="M48 110 C 58 102 70 110" stroke="#2d4f3a" strokeWidth="0.5" fill="none"/>
+      {/* Leaf 2 */}
+      <path d="M42 118 C 28 108 26 88 38 101 C 46 111 44 122 42 118Z" fill="#5a8a6a"/>
+      {/* Leaf 3 */}
+      <path d="M75 82 C 89 62 109 67 97 82 C 85 94 71 92 75 82Z" fill="#3d6b4f"/>
+      <path d="M75 82 C 85 75 97 82" stroke="#2d4f3a" strokeWidth="0.5" fill="none"/>
+      {/* Leaf 4 */}
+      <path d="M69 90 C 55 80 53 60 65 73 C 73 83 71 94 69 90Z" fill="#5a8a6a"/>
+      {/* Leaf 5 upper */}
+      <path d="M108 50 C 122 30 142 35 130 50 C 118 62 104 60 108 50Z" fill="#3d6b4f"/>
+      {/* Rose at tip - outer petals */}
+      <ellipse cx="148" cy="12" rx="5" ry="8" fill="#8b1a1a" opacity="0.9"/>
+      <ellipse cx="148" cy="12" rx="8" ry="5" fill="#8b1a1a" opacity="0.9"/>
+      <ellipse cx="148" cy="12" rx="5" ry="8" fill="#b82e2e" opacity="0.65" transform="rotate(45 148 12)"/>
+      <ellipse cx="148" cy="12" rx="5" ry="8" fill="#b82e2e" opacity="0.65" transform="rotate(-45 148 12)"/>
+      {/* Rose center */}
+      <circle cx="148" cy="12" r="4" fill="#6b1010"/>
+      <circle cx="148" cy="12" r="2" fill="#d4a853"/>
+      {/* Small bud left branch */}
+      <circle cx="18" cy="88" r="3" fill="#8b1a1a" opacity="0.75"/>
+      <ellipse cx="18" cy="84" rx="1.5" ry="3" fill="#b82e2e" opacity="0.75"/>
+      <ellipse cx="22" cy="88" rx="3" ry="1.5" fill="#b82e2e" opacity="0.75"/>
+      {/* Small bud right branch */}
+      <circle cx="100" cy="38" r="3" fill="#8b1a1a" opacity="0.75"/>
+      <ellipse cx="100" cy="34" rx="1.5" ry="3" fill="#b82e2e" opacity="0.75"/>
+      <ellipse cx="96" cy="38" rx="3" ry="1.5" fill="#8b1a1a" opacity="0.75"/>
+    </svg>
+  );
+}
 
 const WEDDING_DATE = "2026-04-11T17:00:00";
 const WEDDING_DISPLAY_DATE = "Saturday, April 11th, 2026";
@@ -8,9 +50,95 @@ const WEDDING_VENUE = "The Garden Venue";
 const WEDDING_ADDRESS = "Family Park, Gate 4, New Cairo";
 const WEDDING_MAP_URL = "https://maps.app.goo.gl/MGcWduSzkcBLm4PE9";
 
-export default function App() {
+const CONTENT = {
+  en: {
+    lang: "en",
+    dir: "ltr",
+    switchLabel: "العربية",
+    family: "Together with their families",
+    invite: "Invite you to celebrate their wedding",
+    details: "Wedding Details",
+    dateLabel: "The Date",
+    timeLabel: "The Time",
+    venueLabel: "The Venue",
+    addToCalendar: "Add to Calendar",
+    viewMap: "View Map",
+    countdownTitle: "Counting Down",
+    countdownSubtitle: "To Our Special Day",
+    countdownLabels: ["Days", "Hours", "Minutes", "Seconds"] as const,
+    closingLines: ["Kiss Your Kids Goodnight", "And", "Join Us"],
+    signature: "Amr & Nadine",
+    footer: "With love, Amr & Nadine",
+    displayDate: WEDDING_DISPLAY_DATE,
+    calendarSummary: "Amr & Nadine Wedding",
+    calendarDescription: "Wedding celebration",
+  },
+  ar: {
+    lang: "ar",
+    dir: "rtl",
+    switchLabel: "English",
+    family: "بدعوة من عائلتيهما",
+    invite: "يدعوانكم لمشاركتهما فرحة الزفاف",
+    details: "تفاصيل الحفل",
+    dateLabel: "التاريخ",
+    timeLabel: "الوقت",
+    venueLabel: "المكان",
+    addToCalendar: "أضف إلى التقويم",
+    viewMap: "عرض الموقع",
+    countdownTitle: "العد التنازلي",
+    countdownSubtitle: "حتى يومنا المميز",
+    countdownLabels: ["أيام", "ساعات", "دقائق", "ثوانٍ"] as const,
+    closingLines: ["قبّلوا أطفالكم تصبحون على خير", "و", "انضموا إلينا"],
+    signature: "عمرو و نادين",
+    footer: "مع الحب، عمرو و نادين",
+    displayDate: "السبت، 11 أبريل 2026",
+    calendarSummary: "زفاف عمرو و نادين",
+    calendarDescription: "حفل الزفاف",
+  },
+} as const;
+
+type Language = keyof typeof CONTENT;
+
+function formatCalendarDate(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
+  return `${year}${month}${day}T${hours}${minutes}${seconds}`;
+}
+
+interface AppProps {
+  initialLanguage: Language;
+}
+
+export default function App({ initialLanguage }: Readonly<AppProps>) {
+  const content = CONTENT[initialLanguage];
+  const isArabic = initialLanguage === "ar";
+  const switchHref = isArabic ? "../" : "./ar/";
+  const weddingStart = new Date(WEDDING_DATE);
+  const weddingEnd = new Date(weddingStart.getTime() + 4 * 60 * 60 * 1000);
+  const calendarFile = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Amr and Nadine Wedding//EN",
+    "BEGIN:VEVENT",
+    `UID:amr-nadine-wedding-${formatCalendarDate(weddingStart)}@wedding`,
+    `DTSTAMP:${formatCalendarDate(new Date())}`,
+    `DTSTART:${formatCalendarDate(weddingStart)}`,
+    `DTEND:${formatCalendarDate(weddingEnd)}`,
+    `SUMMARY:${content.calendarSummary}`,
+    `LOCATION:${WEDDING_VENUE}, ${WEDDING_ADDRESS}`,
+    `DESCRIPTION:${content.calendarDescription} - ${content.displayDate} ${WEDDING_TIME} - ${WEDDING_VENUE}, ${WEDDING_ADDRESS}`,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\n");
+  const calendarHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(calendarFile)}`;
+
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden" dir={content.dir} lang={content.lang}>
       {/* Background pattern overlay */}
       <div
         className="pointer-events-none fixed inset-0 opacity-[0.04]"
@@ -21,9 +149,24 @@ export default function App() {
 
 
       <main className="relative z-10 flex flex-col items-center">
+        <div className="fixed top-4 z-20 w-full px-6">
+          <div className={`mx-auto flex max-w-6xl ${isArabic ? "justify-start" : "justify-end"}`}>
+            <a
+              href={switchHref}
+              className="inline-block text-sm font-semibold tracking-widest text-gold border border-gold/50 rounded-full px-5 py-2 hover:bg-gold/10 transition-colors font-[family-name:var(--font-playfair)] bg-background/80 backdrop-blur-sm"
+            >
+              {content.switchLabel}
+            </a>
+          </div>
+        </div>
 
         {/* ── Hero Section (from new design) ── */}
-        <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-6 text-center">
+        <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-6 text-center overflow-hidden">
+          {/* Floral corner decorations */}
+          <FloralCorner className="pointer-events-none absolute top-0 left-0 w-44 sm:w-64 h-44 sm:h-64 opacity-20" style={{ transform: "scaleX(-1) scaleY(-1)" }} />
+          <FloralCorner className="pointer-events-none absolute top-0 right-0 w-44 sm:w-64 h-44 sm:h-64 opacity-20" style={{ transform: "scaleY(-1)" }} />
+          <FloralCorner className="pointer-events-none absolute bottom-0 left-0 w-44 sm:w-64 h-44 sm:h-64 opacity-20" style={{ transform: "scaleX(-1)" }} />
+          <FloralCorner className="pointer-events-none absolute bottom-0 right-0 w-44 sm:w-64 h-44 sm:h-64 opacity-20" />
           {/* Top decorative flourish */}
           <div className="fade-in-up mb-6">
             <svg className="mx-auto h-16 w-40 text-gold/40" viewBox="0 0 200 60" fill="none">
@@ -36,8 +179,8 @@ export default function App() {
           </div>
 
           <div className="fade-in-up fade-in-up-delay-1">
-            <p className="mb-8 text-base font-semibold uppercase tracking-[0.35em] text-gold font-[family-name:var(--font-playfair)]">
-              Together with their families
+            <p className={`mb-8 text-base font-semibold text-gold font-[family-name:var(--font-playfair)] ${isArabic ? "tracking-normal" : "uppercase tracking-[0.35em]"}`}>
+              {content.family}
             </p>
           </div>
 
@@ -60,8 +203,8 @@ export default function App() {
           </div>
 
           <div className="fade-in-up fade-in-up-delay-5 mt-10">
-            <p className="text-xl sm:text-2xl font-semibold tracking-widest text-foreground font-[family-name:var(--font-playfair)]">
-              Invite you to celebrate their wedding
+            <p className={`text-xl sm:text-2xl font-semibold text-foreground font-[family-name:var(--font-playfair)] ${isArabic ? "tracking-normal leading-loose" : "tracking-widest"}`}>
+              {content.invite}
             </p>
           </div>
 
@@ -90,12 +233,12 @@ export default function App() {
             {/* Section title */}
             <div className="mb-12 text-center">
               <h2 className="gold-shimmer font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-semibold">
-                Wedding Details
+                {content.details}
               </h2>
               <div className="mx-auto mt-4 flex items-center justify-center gap-3">
-                <span className="h-px w-12 bg-gold/30" />
+                <FloralCorner className="w-10 h-10 opacity-50" style={{ transform: "scaleX(-1)" }} />
                 <span className="text-gold text-xs">✦ ✦ ✦</span>
-                <span className="h-px w-12 bg-gold/30" />
+                <FloralCorner className="w-10 h-10 opacity-50" />
               </div>
             </div>
 
@@ -107,11 +250,18 @@ export default function App() {
                   <Calendar className="h-6 w-6 text-gold" />
                 </div>
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-gold">
-                  The Date
+                  {content.dateLabel}
                 </h3>
                 <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground" style={{ fontFamily: "system-ui, sans-serif" }}>
-                  {WEDDING_DISPLAY_DATE}
+                  {content.displayDate}
                 </p>
+                <a
+                  href={calendarHref}
+                  download="amr-nadine-wedding.ics"
+                  className="mt-3 inline-block text-sm font-semibold uppercase tracking-widest text-gold border border-gold/50 rounded-full px-5 py-2 hover:bg-gold/10 transition-colors font-[family-name:var(--font-playfair)]"
+                >
+                  {content.addToCalendar}
+                </a>
               </div>
 
               {/* Time */}
@@ -120,10 +270,10 @@ export default function App() {
                   <Clock className="h-6 w-6 text-gold" />
                 </div>
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-gold">
-                  The Time
+                  {content.timeLabel}
                 </h3>
                 <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground" style={{ fontFamily: "system-ui, sans-serif" }}>
-                  {WEDDING_TIME}
+                  {isArabic ? "5:00 مساءً" : WEDDING_TIME}
                 </p>
               </div>
 
@@ -133,7 +283,7 @@ export default function App() {
                   <MapPin className="h-6 w-6 text-gold" />
                 </div>
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-gold">
-                  The Venue
+                  {content.venueLabel}
                 </h3>
                 <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground" style={{ fontFamily: "system-ui, sans-serif" }}>
                   {WEDDING_VENUE}
@@ -147,7 +297,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="mt-3 inline-block text-sm font-semibold uppercase tracking-widest text-gold border border-gold/50 rounded-full px-5 py-2 hover:bg-gold/10 transition-colors font-[family-name:var(--font-playfair)]"
                 >
-                  View Map
+                  {content.viewMap}
                 </a>
               </div>
             </div>
@@ -157,12 +307,12 @@ export default function App() {
         {/* ── Countdown Section (original design) ── */}
         <section className="w-full max-w-4xl px-6 py-16 text-center">
           <h2 className="gold-shimmer font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-semibold mb-3">
-            Counting Down
+            {content.countdownTitle}
           </h2>
-          <p className="text-foreground text-base font-semibold tracking-widest uppercase mb-10 font-[family-name:var(--font-playfair)]">
-            To Our Special Day
+          <p className={`text-foreground text-base font-semibold mb-10 font-[family-name:var(--font-playfair)] ${isArabic ? "tracking-normal" : "tracking-widest uppercase"}`}>
+            {content.countdownSubtitle}
           </p>
-          <Countdown targetDate={WEDDING_DATE} />
+          <Countdown targetDate={WEDDING_DATE} labels={content.countdownLabels} />
         </section>
 
         {/* ── Closing Section (from new design) ── */}
@@ -174,17 +324,17 @@ export default function App() {
           </div>
 
           <p className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl text-gold mb-6 leading-snug">
-            Kiss Your Kids Goodnight
+            {content.closingLines[0]}
           </p>
           <p className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl text-gold mb-6 leading-snug">
-            And
+            {content.closingLines[1]}
           </p>
           <p className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl text-gold mb-6 leading-snug">
-            Join Us
+            {content.closingLines[2]}
           </p>
 
-          <p className="text-foreground text-lg font-semibold tracking-[0.25em] uppercase font-[family-name:var(--font-playfair)]">
-            Amr &amp; Nadine
+          <p className={`text-foreground text-lg font-semibold font-[family-name:var(--font-playfair)] ${isArabic ? "tracking-normal" : "tracking-[0.25em] uppercase"}`}>
+            {content.signature}
           </p>
 
           {/* Bottom flourish */}
@@ -200,7 +350,7 @@ export default function App() {
         {/* ── Footer ── */}
         <footer className="w-full py-8 text-center border-t border-gold/10">
           <p className="text-sm text-foreground font-[family-name:var(--font-playfair)] tracking-wider">
-            With love, Amr &amp; Nadine &bull; {WEDDING_DISPLAY_DATE}
+            {content.footer} &bull; {content.displayDate}
           </p>
         </footer>
       </main>
